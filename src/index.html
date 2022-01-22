@@ -30,12 +30,16 @@
 <body>
 <figure id="bridgeContainer">
     <canvas id="bridge" width="750" height="465"></canvas>
-    <figcaption>Downtown Calgary in 2013 and 1943; mouse down or touch on photo to reveal</figcaption>
+    <figcaption>
+        <p>
+            by <a  target="_blank" href="https://www.linkedin.com/in/farhan-saqib-%E2%9C%94-444203117/"> farhan saqib</a>
+        </p>
+    </figcaption>
 </figure>
 </body>
 
 <script>
-    var bridge = document.getElementById("bridge"),
+    let bridge = document.getElementById("bridge"),
         bridgeCanvas = bridge.getContext('2d'),
         brushRadius = (bridge.width / 100) * 5,
         img = new Image();
@@ -48,7 +52,7 @@
     img.loc = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/';
     img.filename = 'calgary-bridge-2013.jpg';
     if (window.devicePixelRatio >= 2) {
-        var nameParts = img.filename.split('.');
+        let nameParts = img.filename.split('.');
         img.src = img.loc + nameParts[0]+"-2x"+"."+nameParts[1];
     } else {
         img.src = img.loc + img.filename;
@@ -65,7 +69,7 @@
     }
 
     function getBrushPos(xRef, yRef) {
-        var bridgeRect = bridge.getBoundingClientRect();
+        let bridgeRect = bridge.getBoundingClientRect();
         return {
             x: Math.floor((xRef-bridgeRect.left)/(bridgeRect.right-bridgeRect.left)*bridge.width),
             y: Math.floor((yRef-bridgeRect.top)/(bridgeRect.bottom-bridgeRect.top)*bridge.height)
